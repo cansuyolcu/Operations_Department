@@ -197,6 +197,77 @@ print('Accuracy Test : {}'.format(evaluate[1]))
 10/10 [==============================] - 7s 745ms/step - loss: 1.7871 - accuracy: 0.7750
 Accuracy Test : 0.7749999761581421
 
+```python
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+
+prediction = []
+original = []
+image = []
+
+for i in range(len(os.listdir(test_directory))):
+  for item in os.listdir(os.path.join(test_directory,str(i))):
+    img= cv2.imread(os.path.join(test_directory,str(i),item))
+    img = cv2.resize(img,(256,256))
+    image.append(img)
+    img = img / 255
+    img = img.reshape(-1,256,256,3)
+    predict = model.predict(img)
+    predict = np.argmax(predict)
+    prediction.append(predict)
+    original.append(i)
+    ```
+    
+    ```python
+    len(original)
+    ```
+    40
+    
+    ```python
+    score = accuracy_score(original,prediction)
+print("Test Accuracy : {}".format(score))
+```
+Test Accuracy : 0.825
+
+```python
+L = 5
+W = 5
+
+fig, axes = plt.subplots(L, W, figsize = (12, 12))
+axes = axes.ravel()
+
+for i in np.arange(0, L*W):
+    axes[i].imshow(image[i])
+    axes[i].set_title('Guess={}\nTrue={}'.format(str(label_names[prediction[i]]), str(label_names[original[i]])))
+    axes[i].axis('off')
+
+plt.subplots_adjust(wspace = 1.2) 
+```
+
+ <img src= "https://user-images.githubusercontent.com/66487971/91971198-7a502d80-ed21-11ea-9086-bc1f6d140b1d.png" width = 800>
+ 
+ ```python
+ print(classification_report(np.asarray(original), np.asarray(prediction)))
+ ```
+ 
+  <img src= "https://user-images.githubusercontent.com/66487971/91971355-bc796f00-ed21-11ea-9208-5af12379c54b.png" width = 500>
+  
+  
+
+ ```python
+cm = confusion_matrix(np.asarray(original), np.asarray(prediction))
+ax = plt.subplot()
+sns.heatmap(cm, annot = True, ax = ax)
+
+ax.set_xlabel('Predicted')
+ax.set_ylabel('Original')
+ax.set_title('Confusion_matrix')
+```
+ 
+  <img src= "https://user-images.githubusercontent.com/66487971/91971463-e5016900-ed21-11ea-886c-484de9ea5db4.png" width = 600>
+  
+  
+
+## THIS CONCLUDES MY PROJECT HERE. THANKS FOR READING ALL THE WAY THROUGH.
 
 
 
