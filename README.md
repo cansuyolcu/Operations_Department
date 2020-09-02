@@ -160,12 +160,42 @@ plt.xlabel('Epoch')
 plt.ylabel('Training Accuracy and Loss')
 plt.legend(['Training Accuracy', 'Training Loss'])
 ```
-  ```python
+ <img src= "https://user-images.githubusercontent.com/66487971/91970591-90112300-ed20-11ea-8004-0c751be86da7.png" width = 500>
+ 
+ ```python
 
+plt.plot(history.history['val_loss'])
+plt.title('Model Loss During Cross-Validation')
+plt.xlabel('Epoch')
+plt.ylabel('Validation Loss')
+plt.legend(['Validation Loss'])
 ```
   
+ <img src= "https://user-images.githubusercontent.com/66487971/91970745-c5b60c00-ed20-11ea-8905-8fda6505ac84.png" width = 500>
 
+ ```python
 
+plt.plot(history.history['val_accuracy'])
+plt.title('Model Accuracy Progress During Cross-Validation')
+plt.xlabel('Epoch')
+plt.ylabel('Validation Accuracy')
+plt.legend(['Validation Accuracy'])
+```
+  
+ <img src= "https://user-images.githubusercontent.com/66487971/91970804-df575380-ed20-11ea-86ed-8e3c0e17bd29.png" width = 500>
+ 
+ ```python
+ test_gen = ImageDataGenerator(rescale = 1./255)
+
+test_generator = test_gen.flow_from_directory(batch_size = 40, directory= test_directory, shuffle= True, target_size=(256,256), class_mode= 'categorical')
+
+evaluate = model.evaluate_generator(test_generator, steps = test_generator.n // 4, verbose =1)
+
+print('Accuracy Test : {}'.format(evaluate[1]))
+```
+
+10/10 [==============================] - 7s 745ms/step - loss: 1.7871 - accuracy: 0.7750
+Accuracy Test : 0.7749999761581421
 
 
 
