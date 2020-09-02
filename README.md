@@ -86,6 +86,23 @@ plt.subplots_adjust(wspace = 0.5)
 ```
  <img src= "https://user-images.githubusercontent.com/66487971/91965499-39541b00-ed19-11ea-9210-e92a03702feb.png" width = 1000>
 
+#  IMPORTING THE MODEL WITH PRETRAINED WEIGHTS
+
+```python
+basemodel = ResNet50(weights = 'imagenet', include_top = False, input_tensor = Input(shape=(256,256,3)))
+```
+
+```python
+basemodel.summary()
+```
+ <img src= "https://user-images.githubusercontent.com/66487971/91966016-fe061c00-ed19-11ea-9872-e3b666c67690.png" width = 1000>
+ 
+ ```python
+ for layer in basemodel.layers[:-10]:
+  layers.trainable = False
+  ```
+
+
   
 
 
