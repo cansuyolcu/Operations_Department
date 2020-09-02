@@ -84,7 +84,7 @@ for i in np.arange(0, L*W):
 
 plt.subplots_adjust(wspace = 0.5) 
 ```
- <img src= "https://user-images.githubusercontent.com/66487971/91965499-39541b00-ed19-11ea-9210-e92a03702feb.png" width = 1000>
+ <img src= "https://user-images.githubusercontent.com/66487971/91965499-39541b00-ed19-11ea-9210-e92a03702feb.png" width = 800>
 
 #  IMPORTING THE MODEL WITH PRETRAINED WEIGHTS
 
@@ -263,7 +263,7 @@ ax.set_ylabel('Original')
 ax.set_title('Confusion_matrix')
 ```
  
-  <img src= "https://user-images.githubusercontent.com/66487971/91971463-e5016900-ed21-11ea-886c-484de9ea5db4.png" width = 600>
+  <img src= "https://user-images.githubusercontent.com/66487971/91971463-e5016900-ed21-11ea-886c-484de9ea5db4.png" width = 450>
   
   
 
