@@ -33,6 +33,7 @@ os.listdir(XRay_Directory)
 ```
 ['2', '0', '3', '1']
 
+
 ```python
 
 # Using image generator to generate tensor images data and normalize them
